@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+   awsm:
+      image: usdaarsnwrc/awsm:develop
+      volumes:
+        - /home/scotthavens/Documents/Papers/AWSM/DATA/BRB/data:/data/input
+        - /data/snowdrift/:/data/output
+#      entrypoint: /bin/bash
+#      stdin_open: true
+#      tty: true
+
