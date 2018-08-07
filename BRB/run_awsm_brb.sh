@@ -33,4 +33,7 @@ if [ "$1" = "spinup" ]; then
 
 fi
 
+# run the actual part that we need
+echo "Running the large inflow event for the BRB"
+docker-compose run awsm /data/input/awsm_config_0401_0630.ini
 

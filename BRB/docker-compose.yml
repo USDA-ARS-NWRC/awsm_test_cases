@@ -7,6 +7,6 @@ services:
       volumes:
         - /home/scotthavens/Documents/Papers/AWSM/DATA/BRB/data:/data/input
         - /data/snowdrift/:/data/output
-      user: ${CURRENT_UID}
+      #user: ${CURRENT_UID}
 
 
