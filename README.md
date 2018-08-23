@@ -14,7 +14,7 @@ pwd
 docker pull usdaarsnwrc/awsm:develop
 
 ### Creating the maxus file
-docker run -v <path to data>/test_cases:/data -it usdaarsnwrc/awsm:develop gen_maxus /data/topo/tuolx_dem_50m.ipw --out_maxus /data/tuolumne/topo/maxus.nc
+docker run -v <path to data>/test_cases:/data -it usdaarsnwrc/awsm:develop gen_maxus /data/tuolumne/topo/tuolx_dem_50m.ipw --out_maxus /data/tuolumne/topo/maxus.nc
 
 ### Run the case
 docker run -v <path to data>/test_cases:/data -it usdaarsnwrc/awsm:develop config_tuol_docker.ini
