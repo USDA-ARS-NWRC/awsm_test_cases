@@ -7,7 +7,6 @@ import shutil
 from subprocess import call
 
 def run():
-    print('start')
     parser = argparse.ArgumentParser(description='Run AWSM example cases')
     parser.add_argument('--case', metavar='C', type=str,
                         help='Test case to run, either tuol, brb, or rcew',
