@@ -1,6 +1,9 @@
 output/tuolumne
+output/brb
+output/rcew
 tuolumne/topo/maxus.nc
 maxus.nc
 maxus*.nc
+maxus_orig.nc
 snow.nc
 em.nc

@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+   awsm:
+      image: usdaarsnwrc/awsm:develop
+      # image: awsm_test
+      volumes:
+        - /home/scotthavens/Documents/Papers/AWSM/DATA/BRB/data:/data/input
+        - /data/snowdrift/:/data/output
+      #user: ${CURRENT_UID}
+
+
