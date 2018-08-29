@@ -1,0 +1,54 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+import sys
+import shutil
+from subprocess import call
+
+def run():
+    print('start')
+    parser = argparse.ArgumentParser(description='Run AWSM example cases')
+    parser.add_argument('--case', metavar='C', type=str,
+                        help='Test case to run, either tuol, brb, or rcew',
+                        default='tuol')
+
+    args = parser.parse_args()
+    case = args.case
+
+    # run the tuol test case
+    if case == 'tuol':
+        cfg = 'config_tuol_docker.ini'
+        fpc = 'tuolumne'
+
+    elif case == 'brb':
+        cfg = 'config_brb_docker.ini'
+        fpc = 'brb'
+
+    elif case == 'rcew':
+        print('Not ready yet')
+        sys.exit()
+
+    else:
+        raise IOError('Not a valid test case')
+
+    # create maxus if needed
+    if not os.path.isfile('./{}/topo/maxus.nc'.format(fpc)):
+        call(('docker-compose -f {}/docker-compose.yml'
+                        ' run awsm gen_maxus --window=30'
+                        ' --out_maxus=/data/input/topo/maxus.nc'
+                        ' /data/input/topo/tuolx_dem_50m.ipw').format(fpc),
+                        shell=True, universal_newlines=True)
+
+        # rename windowed maxus as maxus
+        os.remove('./tuolumne/topo/maxus.nc')
+        shutil.move('./tuolumne/topo/maxus_30window.nc', './tuolumne/topo/maxus.nc')
+
+    # run system
+    call(('docker-compose'
+                    ' -f ./{}/docker-compose.yml'
+                    ' run awsm /data/input/{}').format(fpc, cfg),
+                    shell=True, universal_newlines=True)
+
+if __name__ == '__main__':
+    run()

@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+   awsm:
+      image: usdaarsnwrc/awsm:develop
+      volumes:
+        - .:/data/input
+        - ../output:/data/output
+      #user: ${CURRENT_UID}
