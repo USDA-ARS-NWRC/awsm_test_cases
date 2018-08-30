@@ -19,10 +19,12 @@ def run():
     if case == 'tuol':
         cfg = 'config_tuol_docker.ini'
         fpc = 'tuolumne'
+        topo = 'tuolx_dem_50m.ipw'
 
     elif case == 'brb':
-        cfg = 'config_brb_docker.ini'
+        cfg = 'awsm_config_0401_0630.ini'
         fpc = 'brb'
+        topo = 'topo.nc'
 
     elif case == 'rcew':
         print('Not ready yet')
@@ -36,12 +38,13 @@ def run():
         call(('docker-compose -f {}/docker-compose.yml'
                         ' run awsm gen_maxus --window=30'
                         ' --out_maxus=/data/input/topo/maxus.nc'
-                        ' /data/input/topo/tuolx_dem_50m.ipw').format(fpc),
+                        ' /data/input/topo/{}').format(fpc, topo),
                         shell=True, universal_newlines=True)
 
         # rename windowed maxus as maxus
-        os.remove('./tuolumne/topo/maxus.nc')
-        shutil.move('./tuolumne/topo/maxus_30window.nc', './tuolumne/topo/maxus.nc')
+        os.remove('./{}/topo/maxus.nc'.format(fpc))
+        shutil.move('./{}/topo/maxus_30window.nc'.format(fpc),
+                    './{}/topo/maxus.nc'.format(fpc))
 
     # run system
     call(('docker-compose'
