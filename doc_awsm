@@ -15,17 +15,17 @@ def run():
     args = parser.parse_args()
     case = args.case
 
-    # run the tuol test case
+    # set variables to run Tuol case
     if case == 'tuol':
         cfg = 'config_tuol_docker.ini'
         fpc = 'tuolumne'
         topo = 'tuolx_dem_50m.ipw'
-
+    # set variables to run BRB case
     elif case == 'brb':
         cfg = 'awsm_config_0401_0630.ini'
         fpc = 'brb'
         topo = 'topo.nc'
-
+    # set variables to run rcew (not ready yet)
     elif case == 'rcew':
         print('Not ready yet')
         sys.exit()
@@ -34,12 +34,15 @@ def run():
         raise IOError('Not a valid test case')
 
     # create maxus if needed
+    maxus_call = None
     if not os.path.isfile('./{}/topo/maxus.nc'.format(fpc)):
-        call(('docker-compose -f {}/docker-compose.yml'
+        # format command to generate maxus
+        maxus_call = ('docker-compose -f {}/docker-compose.yml'
                         ' run awsm gen_maxus --window=30'
                         ' --out_maxus=/data/input/topo/maxus.nc'
-                        ' /data/input/topo/{}').format(fpc, topo),
-                        shell=True, universal_newlines=True)
+                        ' /data/input/topo/{}').format(fpc, topo)
+        # run command
+        call(maxus_call, shell=True, universal_newlines=True)
 
         # rename windowed maxus as maxus
         os.remove('./{}/topo/maxus.nc'.format(fpc))
@@ -47,10 +50,16 @@ def run():
                     './{}/topo/maxus.nc'.format(fpc))
 
     # run system
-    call(('docker-compose'
+    run_call = ('docker-compose'
                     ' -f ./{}/docker-compose.yml'
-                    ' run awsm /data/input/{}').format(fpc, cfg),
-                    shell=True, universal_newlines=True)
+                    ' run awsm /data/input/{}').format(fpc, cfg)
+    call(run_call, shell=True, universal_newlines=True)
+
+    # give user the commands used
+    print('If you want to run this outside of the Python script, the commands were: ')
+    if maxus_call is not None:
+        print(maxus_call)
+    print(run_call)
 
 if __name__ == '__main__':
     run()
