@@ -14,7 +14,7 @@ The configuration files within the `brb/` and `tuolumne/` directories give a goo
 
 - **doc_awsm:** python script wrapping the docker compose calls for each test case
 
-## Table of Contents
+## Table of contents
 - [Set-up](#set-up)
 - [Downloading this repository](#downloading-this-repository)
 - [Running the test case](#running-the-test-case)
@@ -27,7 +27,7 @@ The configuration files within the `brb/` and `tuolumne/` directories give a goo
 # Downloading this repository
 If you have git installed, you can pull down the `awsm_test_cases` repository with this command
 ```
-git clone git@github.com:USDA-ARS-NWRC/test_cases.git
+git clone https://github.com/USDA-ARS-NWRC/awsm_test_cases.git
 ```
 For useres without git installed, go to https://github.com/USDA-ARS-NWRC/awsm_test_cases. Click on the green "Clone or download" button, download the zip file, and unzip it.
 
