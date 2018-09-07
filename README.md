@@ -29,7 +29,7 @@ If you have git installed, you can pull down the `awsm_test_cases` repository wi
 ```
 git clone https://github.com/USDA-ARS-NWRC/awsm_test_cases.git
 ```
-For useres without git installed, go to https://github.com/USDA-ARS-NWRC/awsm_test_cases. Click on the green "Clone or download" button, download the zip file, and unzip it.
+For users without git installed, go to https://github.com/USDA-ARS-NWRC/awsm_test_cases. Click on the green "Clone or download" button, download the zip file, and unzip it.
 
 # Set-up
 Instructions for installing the supporting software
