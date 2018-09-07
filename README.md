@@ -1,4 +1,4 @@
-# Summary
+# AWSM Test Cases
 This repository contains instructions for installing AWSM and running short test cases using Docker. The instructions involve installing the supporting software and the AWSM system. The test cases include a three day run in the Tuolumne River Basin during WY 2016, including an ASO measured depth update, and a three month run in the Boise River Basin during WY 2016.
 
 The configuration files within the `brb/` and `tuolumne/` directories give a good insight into the inputs required to run AWSM.
@@ -15,8 +15,8 @@ The configuration files within the `brb/` and `tuolumne/` directories give a goo
 - **doc_awsm:** python script wrapping the docker compose calls for each test case
 
 ## Table of contents
-- [Set-up](#set-up)
 - [Downloading this repository](#downloading-this-repository)
+- [Set-up](#set-up)
 - [Running the test case](#running-the-test-case)
 - [Running the commands](#running-the-commands)
 - [Look at the output](#look-at-the-output)
@@ -73,8 +73,8 @@ python .\doc_awsm --case tuol
 ```
 
 ## Look at the output
-The output for *PySnobal* will be located in `output/tuolumne/devel/wy2016/test_case/runs/run20160415_20160418/`
-and the report will be located at `output/tuolumne/devel/wy2016/test_case/reports/report_20160415_20160418/TuolumneRiverBasin_SnowpackSummary_20160417.pdf`.
+The output for *PySnobal* will be located in `output/tuolumne/devel/wy2016/test_case/runs/run20160415_20160416/`
+and the report will be located at `output/tuolumne/devel/wy2016/test_case/reports/report_20160415_20160416/TuolumneRiverBasin_SnowpackSummary_20160416.pdf`.
 These paths are relative to the `awsm_test_cases/` directory.
 
 Simply open the report with a standard pdf reader. To visualize the time series
@@ -132,7 +132,7 @@ functionality tests. These can be run within PowerShell using the command
 docker run usdaarsnwrc/awsm:develop test
 ```
 # Linux and Mac set-up instructions
-A minimal amount of supporting software is needed to run AWSM. Mainly, you will need to install Docker and a NetCDF viewer to visualize the data. Successfully installing and running Docker **requires that you are a system administrator for your workstation.**
+A minimal amount of supporting software is needed to run AWSM. Mainly, you will need to install Docker and a NetCDF viewer to visualize the data. Successfully installing and running Docker **requires that you are a system administrator for your workstation or have sudo privileges.**
 
 ## Docker install and documentation
 Our modeling system is isolated in a Docker container in order to run consistently on multiple operating systems.
