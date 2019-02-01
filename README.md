@@ -12,17 +12,34 @@ The configuration files within the `brb/` and `tuolumne/` directories give a goo
 
 - **README.md:** documentation on running the test cases
 
-- **doc_awsm:** python script wrapping the docker compose calls for each test case
+- **docker_awsm:** python script wrapping the docker compose calls for each test case
 
 ## Table of contents
+- [AWSM Test Cases](#awsm-test-cases)
+  - [Directory contents](#directory-contents)
+  - [Table of contents](#table-of-contents)
 - [Downloading this repository](#downloading-this-repository)
 - [Set-up](#set-up)
 - [Running the test case](#running-the-test-case)
-- [Running the commands](#running-the-commands)
-- [Look at the output](#look-at-the-output)
-- [Additional cases](#additional-cases)
+  - [Move into the repository](#move-into-the-repository)
+  - [Running the commands](#running-the-commands)
+  - [Look at the output](#look-at-the-output)
+  - [Additional cases](#additional-cases)
 - [Windows set-up instructions](#windows-set-up-instructions)
+  - [Docker install and documentation](#docker-install-and-documentation)
+    - [Install](#install)
+    - [Compute resources](#compute-resources)
+  - [Get AWSM Docker image](#get-awsm-docker-image)
+  - [NetCDF viewers](#netcdf-viewers)
+  - [Running AWSM tests](#running-awsm-tests)
 - [Linux and Mac set-up instructions](#linux-and-mac-set-up-instructions)
+  - [Docker install and documentation](#docker-install-and-documentation-1)
+    - [Install](#install-1)
+    - [Install docker-compose](#install-docker-compose)
+    - [Compute resources](#compute-resources-1)
+  - [Get AWSM Docker image](#get-awsm-docker-image-1)
+  - [NetCDF viewers](#netcdf-viewers-1)
+  - [Running AWSM tests](#running-awsm-tests-1)
 
 # Downloading this repository
 If you have git installed, you can pull down the `awsm_test_cases` repository with this command
@@ -65,11 +82,11 @@ the repository, as listed in the [Directory contents](#directory-contents) secti
 ## Running the commands
 From the command prompt on **Linux** or **Mac**, run
 ```
-./doc_awsm --case tuol
+./docker_awsm --case tuol
 ```
 On **Windows**, run the PowerShell command
 ```
-python .\doc_awsm --case tuol
+python .\docker_awsm --case tuol
 ```
 
 ## Look at the output
@@ -86,7 +103,7 @@ This takes up a significant amount of RAM and storage,
 so it may drastically slow down your computer.
 To run the BRB test case, similarly run
 ```
-./doc_awsm --case brb
+./docker_awsm --case brb
 ```
 from the `awsm_test_cases` directory.
 

@@ -2,7 +2,7 @@ version: '2'
 
 services:
    awsm:
-      image: usdaarsnwrc/awsm:develop
+      image: usdaarsnwrc/awsm:0.8.0
       volumes:
         - .:/data/input
         - ../output:/data/output
