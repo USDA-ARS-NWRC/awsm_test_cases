@@ -27,8 +27,9 @@ def run():
         topo = 'topo.nc'
     # set variables to run rcew (not ready yet)
     elif case == 'rcew':
-        print('Not ready yet')
-        sys.exit()
+        cfg = 'config_rcew_docker.ini'
+        fpc = 'rcew'
+        topo = 'topo.nc'
 
     else:
         raise IOError('Not a valid test case')
@@ -36,11 +37,17 @@ def run():
     # create maxus if needed
     maxus_call = None
     if not os.path.isfile('./{}/topo/maxus.nc'.format(fpc)):
+        
+        # if rcew, also create the tbreak for precip redistribution
+        tbreak = None
+        if case == 'rcew':
+            tbreak = '--make_tbreak=1 --out_tbreak=/data/input/topo/tbreak.nc'
+
         # format command to generate maxus
         maxus_call = ('docker-compose -f {}/docker-compose.yml'
-                        ' run awsm gen_maxus --window=30'
+                        ' run awsm gen_maxus --window=30 {}'
                         ' --out_maxus=/data/input/topo/maxus.nc'
-                        ' /data/input/topo/{}').format(fpc, topo)
+                        ' /data/input/topo/{}').format(fpc, tbreak, topo)
         # run command
         call(maxus_call, shell=True, universal_newlines=True)
 

@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+   awsm:
+      image: usdaarsnwrc/awsm:0.8.0
+      volumes:
+        - .:/data/input
+        - ../output:/data/output

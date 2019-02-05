@@ -5,5 +5,7 @@ tuolumne/topo/maxus.nc
 maxus.nc
 maxus*.nc
 maxus_orig.nc
+tbreak.nc
+tbreak*.nc
 snow.nc
 em.nc
