@@ -1,54 +1,104 @@
 # AWSM Test Cases
-This repository contains instructions for installing AWSM and running short test cases using Docker. The instructions involve installing the supporting software and the AWSM system. The test cases include a three day run in the Tuolumne River Basin during WY 2016, including an ASO measured depth update, and a three month run in the Boise River Basin during WY 2016.
-
-The configuration files within the `brb/` and `tuolumne/` directories give a good insight into the inputs required to run AWSM.
-
-## Directory contents
-- **brb/:** all files necessary to run the Boise River Basin test case
-
-- **tuolumne/:** all files necessary to run the Tuolumne River Basin test case
-
-- **output/:** contains output from the test cases
-
-- **README.md:** documentation on running the test cases
-
-- **doc_awsm:** python script wrapping the docker compose calls for each test case
+This repository contains instructions for installing the Docker container of AWSM and running short test cases. The instructions involve installing the supporting software and the AWSM system. The test cases include three model tests:
+1. Tuolumne River Basin three day run during WY 2016, which includes an lidar snow depth update from the Airborne Snow Observatory
+2. Boise River Basin three month run during WY 2017 during a historic snowmelt event
+3. Reynolds Creek Experimental Watershed for the entire WY 2006 with wind redistribution of precipitation
 
 ## Table of contents
+- [AWSM Test Cases](#awsm-test-cases)
+  - [Table of contents](#table-of-contents)
+  - [Repository contents](#repository-contents)
 - [Downloading this repository](#downloading-this-repository)
-- [Set-up](#set-up)
-- [Running the test case](#running-the-test-case)
-- [Running the commands](#running-the-commands)
-- [Look at the output](#look-at-the-output)
-- [Additional cases](#additional-cases)
-- [Windows set-up instructions](#windows-set-up-instructions)
-- [Linux and Mac set-up instructions](#linux-and-mac-set-up-instructions)
+- [Docker setup](#docker-setup)
+  - [Compute resources](#compute-resources)
+  - [Installing Docker](#installing-docker)
+  - [Installing `docker-compose`](#installing-docker-compose)
+- [NetCDF viewers](#netcdf-viewers)
+  - [Windows](#windows)
+  - [Mac](#mac)
+  - [Linux](#linux)
+- [Running the test cases](#running-the-test-cases)
+  - [Reynolds Creek Experimental Watershed](#reynolds-creek-experimental-watershed)
+  - [Move into the repository](#move-into-the-repository)
+  - [Running the commands](#running-the-commands)
+  - [Look at the output](#look-at-the-output)
+  - [Additional cases](#additional-cases)
+
+## Repository contents
+- **brb/:** all files necessary to run the Boise River Basin test case
+- **tuolumne/:** all files necessary to run the Tuolumne River Basin test case
+- **rcew/:** all files necessary to run the Reynolds Creek Experimental Watershed test case
+- **output/:** contains output from the test cases
+- **README.md:** documentation on running the test cases
+- **awsm_docker:** python script wrapping the docker compose calls for each test case
 
 # Downloading this repository
-If you have git installed, you can pull down the `awsm_test_cases` repository with this command
+If you have git installed, you can clone the `awsm_test_cases` repository with this command
 ```
 git clone https://github.com/USDA-ARS-NWRC/awsm_test_cases.git
 ```
 For users without git installed, go to https://github.com/USDA-ARS-NWRC/awsm_test_cases. Click on the green "Clone or download" button, download the zip file, and unzip it.
 
-# Set-up
-Instructions for installing the supporting software
-are included in the [Linux and Mac set-up instructions](#linux-and-mac-set-up-instructions) section
-and the [Windows set-up instructions](#windows-set-up-instructions) section.
+# Docker setup
+Our modeling system is isolated in a Docker container in order to run consistently on multiple operating systems. The source code is contained and installed within a Docker image, isolating it from the host computer and handling almost all system software dependencies. 
 
-# Running the test case
-There are two tests cases in this `awsm_test_cases` repo. They are the Tuolumne
-River Basin and the Boise River Basin. In order to run these cases using the
-AWSM Docker image, the correct folders must be mounted to the Docker image, and
+In order to run AWSM, you will need to install Docker and understand the basics of running a Docker container. For a more in depth information, read https://docs.docker.com/engine/docker-overview/. 
+
+>**NOTE: Docker requires that you are a system administrator for your workstation or have sudo privileges.**
+
+<!-- Instructions for installing the supporting software are included in the [Linux and Mac set-up instructions](#linux-and-mac-set-up-instructions) section and the [Windows set-up instructions](#windows-set-up-instructions) section. -->
+
+## Compute resources
+Docker is only allowed limited compute resources from your computer. On Windows and Mac, you will need to provide more resources to Docker for AWSM to function properly. We recommend at a minimum:
+* 2 cores
+* 16GB of RAM
+* 20GB of hard drive space if running all test cases
+
+## Installing Docker
+
+* [Window installation instructions](https://docs.docker.com/docker-for-windows/install/)
+* [Mac installation instructions](https://docs.docker.com/docker-for-mac/install/)
+* [Ubuntu installation instruction](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and many other Linux distributions are supported
+
+## Installing `docker-compose`
+
+For ease of use, we use `docker-compose` to handle the mounting of folders between the Docker container and the host computer. Mounting folders between the two systems is required to share the input and output data from the model. Read the [documentation](https://docs.docker.com/compose/install/) for further installation instructions.
+
+* Windows already includes `docker-compose`
+* Mac already includes `docker-compose`
+* Linux [latest install instructions](https://docs.docker.com/compose/install/)
+
+# NetCDF viewers
+
+The output files from [SMRF](https://github.com/USDA-ARS-NWRC/smrf) and [PySnobal](https://github.com/USDA-ARS-NWRC/pysnobal) are in NetCDF format. In order to view these files, you will need a NetCDF viewer. 
+
+## Windows
+Panoply is a NetCDF, HDF, and GRIB viewer maintained by NASA, and is a good option for **Windows** users. Install instruction can be found at https://www.giss.nasa.gov/tools/panoply/.
+
+## Mac
+NCView is a lightweight NetCDF viewer that allows for quick visualization of NetCDF files. It is maintained by UC San Diego. Further documentation can be found at http://meteora.ucsd.edu/~pierce/ncview_home_page.html.
+
+The easiest method of install on a Mac is to use Homebrew.
+```
+brew install ncview
+```
+
+## Linux
+To install Ncview from the command line on Ubuntu:
+```
+sudo apt-get install ncview
+```
+
+# Running the test cases
+
+There are three tests cases in this `awsm_test_cases` repo. They are the Tuolumne
+River Basin, Boise River Basin and Reynolds Creek Experimenatal Watershed. In order to run these cases using the AWSM Docker image, the correct folders must be mounted to the Docker image, and
 the AWSM configuration file must be passed to the Docker image.
 
 For these test cases, the folder sharing is handled through a docker-compose file (located
-in each test case folder), and a Python script that will call the docker-compose
-routine behind the scenes.
+in each test case folder), and a Python script that will call the docker-compose routine behind the scenes.
 
-Both test cases generate a significant amount of data (5.7 Gb for Tuolumne and more
-for BRB), and require a **large amount of RAM.** They should not be run on tablets
-and other computers with less than 16 Gb of RAM.
+## Reynolds Creek Experimental Watershed
 
 ## Move into the repository
 Make sure you have a Terminal open. For **Windows** users, use PowerShell,
@@ -65,11 +115,11 @@ the repository, as listed in the [Directory contents](#directory-contents) secti
 ## Running the commands
 From the command prompt on **Linux** or **Mac**, run
 ```
-./doc_awsm --case tuol
+./awsm_docker --case tuol
 ```
 On **Windows**, run the PowerShell command
 ```
-python .\doc_awsm --case tuol
+python .\awsm_docker --case tuol
 ```
 
 ## Look at the output
@@ -86,105 +136,7 @@ This takes up a significant amount of RAM and storage,
 so it may drastically slow down your computer.
 To run the BRB test case, similarly run
 ```
-./doc_awsm --case brb
+./awsm_docker --case brb
 ```
 from the `awsm_test_cases` directory.
 
-# Windows set-up instructions
-A minimal amount of supporting software is needed to run AWSM. Mainly, you will need to install Docker and a NetCDF viewer to visualize the data. Successfully installing and running Docker on Windows **requires that you are a system administrator for your workstation.**
-
-## Docker install and documentation
-Our modeling system is isolated in a Docker container in order to run consistently on multiple operating systems.
-The source code is contained and installed within a Docker image, isolating it from the host
-computer and handling almost all system software dependencies.
-
-In order to run AWSM, you will need to install Docker and understand the basics of running a Docker container.
-For a more in depth information, read
-https://docs.docker.com/engine/docker-overview/.
-
-### Install
-**Windows** install instructions are located https://docs.docker.com/docker-for-windows/install/.
-
-### Compute resources
-Docker is only allowed limited compute resources from your computer. This may need to be increased to run the example case.
-
-## Get AWSM Docker image
-The docker client can be opened from your programs. You will need to login, which means that
-you need to create a login on docker hub https://hub.docker.com/.
-
-Once docker is installed and you are logged in on the client, you will need to
-pull down the image of the AWSM modeling system. In your open PowerShell, run
-```
-docker pull usdaarsnwrc/awsm:develop
-```
-
-## NetCDF viewers
-The output files from SMRF and PySnobal are in NetCDF format.
-In order to view these files, you will need a NetCDF viewer.
-
-Panoply is a NetCDF, HDF, and GRIB viewer maintained by NASA, and is a good option for **Windows** users.
-Install instruction can be found at https://www.giss.nasa.gov/tools/panoply/.
-
-## Running AWSM tests
-To make sure everything is working properly, AWSM contains a series of
-functionality tests. These can be run within PowerShell using the command
-```
-docker run usdaarsnwrc/awsm:develop test
-```
-# Linux and Mac set-up instructions
-A minimal amount of supporting software is needed to run AWSM. Mainly, you will need to install Docker and a NetCDF viewer to visualize the data. Successfully installing and running Docker **requires that you are a system administrator for your workstation or have sudo privileges.**
-
-## Docker install and documentation
-Our modeling system is isolated in a Docker container in order to run consistently on multiple operating systems.
-The source code is contained and installed within a Docker image, isolating it from the host
-computer and handling almost all system software dependencies.
-
-In order to run AWSM, you will need to install Docker and understand the basics of running a Docker container.
-For a more in depth information, read
-https://docs.docker.com/engine/docker-overview/.
-
-### Install
-A good write up on installing Docker on an **Ubuntu** system can be found at https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04.
-
-For **Mac**, install instructions are located https://docs.docker.com/docker-for-mac/install/.
-
-### Install docker-compose
-**Not needed for Windows or Mac.** For ease of use, we use docker-compose to handle the mounting of folders between the Docker container and the host computer. Mounting folders between the two systems is required to share the input and output data from the model. Docker-compose comes with the Docker install on **Windows** and **Mac** operating systems.
-
-On a **Linux** machine, type `sudo apt-get install docker-compose` into the bash shell.
-
-### Compute resources
-On **Mac** and **Windows**, Docker is only allowed limited compute resources from your computer. This may need to be increased to run the example case.
-
-## Get AWSM Docker image
-On **Mac**, you will need to login to Docker hub before pulling down the AWSM Docker image. The docker client can be opened from your programs. You will need to create a login on docker hub https://hub.docker.com/.
-
-Once docker is installed and you are logged in on the client (if using a Mac),
-you will need to pull down the image of the AWSM modeling system. In your Terminal, run
-```
-docker pull usdaarsnwrc/awsm:develop
-```
-
-## NetCDF viewers
-The output files from SMRF and PySnobal are in NetCDF format.
-In order to view these files, you will need a NetCDF viewer.
-
-NCView is a lightweight NetCDF viewer that allows for quick visualization of NetCDF files. It is maintained by UC San Diego.
-Further documentation can be found at http://meteora.ucsd.edu/~pierce/ncview_home_page.html.
-
-To install Ncview from the command line on **Linux**:
-```
-sudo apt-get update
-sudo apt-get install ncview
-```
-To easiest method of install on **Mac** is to use Homebrew. Documentation on Homebrew can be found at https://brew.sh/.
-```
-brew install ncview
-```
-
-## Running AWSM tests
-To make sure everything is working properly, AWSM contains a series of
-functionality tests. These can be run easily with the command
-```
-docker run usdaarsnwrc/awsm:develop test
-```
