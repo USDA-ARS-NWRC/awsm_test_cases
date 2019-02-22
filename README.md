@@ -18,10 +18,8 @@ This repository contains instructions for installing the Docker container of AWS
   - [Mac](#mac)
   - [Linux](#linux)
 - [Running the test cases](#running-the-test-cases)
-  - [Reynolds Creek Experimental Watershed](#reynolds-creek-experimental-watershed)
-  - [Move into the repository](#move-into-the-repository)
-  - [Running the commands](#running-the-commands)
-  - [Look at the output](#look-at-the-output)
+  - [Reynolds Creek Experimental Watershed (RCEW)](#reynolds-creek-experimental-watershed-rcew)
+    - [Look at the output](#look-at-the-output)
   - [Additional cases](#additional-cases)
 
 ## Repository contents
@@ -39,8 +37,13 @@ git clone https://github.com/USDA-ARS-NWRC/awsm_test_cases.git
 ```
 For users without git installed, go to https://github.com/USDA-ARS-NWRC/awsm_test_cases. Click on the green "Clone or download" button, download the zip file, and unzip it.
 
+Make sure you have a Terminal open. For **Windows** users, use PowerShell, which should come installed on your computer. Move into the folder where the unzipped repository is located. Next, move into the repository. If the repository was downloaded and unzipped, this will involve `cd awsm_test_cases-master/`. If it was cloned with Git, this will involve `cd awsm_test_cases/`.
+
+Type `ls` in the command prompt and make sure you see the correct contents of
+the repository, as listed in the [Directory contents](#directory-contents) section.
+
 # Docker setup
-Our modeling system is isolated in a Docker container in order to run consistently on multiple operating systems. The source code is contained and installed within a Docker image, isolating it from the host computer and handling almost all system software dependencies. 
+Our modeling system is isolated in a Docker container in order to run consistently on multiple operating systems. The source code is contained and installed within a Docker image, isolating it from the host computer and handling almost all system software dependencies. To use Docker, 
 
 In order to run AWSM, you will need to install Docker and understand the basics of running a Docker container. For a more in depth information, read https://docs.docker.com/engine/docker-overview/. 
 
@@ -98,31 +101,30 @@ the AWSM configuration file must be passed to the Docker image.
 For these test cases, the folder sharing is handled through a docker-compose file (located
 in each test case folder), and a Python script that will call the docker-compose routine behind the scenes.
 
-## Reynolds Creek Experimental Watershed
+The `output` folder structure for AWSM was developed to organize multiple runs over various water years and basins. The base output structure for these test cases are
+```
+output/<basin>/devel/<year>/<run_name>/<data | logs | runs><run_date>
+```
 
-## Move into the repository
-Make sure you have a Terminal open. For **Windows** users, use PowerShell,
-which should come installed on your computer.
+## Reynolds Creek Experimental Watershed (RCEW)
 
-Move into the folder where the unzipped repository is located. Next, move into
-the repository. If the repository was downloaded and unzipped, this will
-involve `cd awsm_test_cases-master/`. If it was cloned with Git, this will
-involve `cd awsm_test_cases/`.
+The RCEW test case is for the complete water year 2006. Specifics for this model run:
+* 50 meter resolution, hourly
+* 227 km<sup>2</sup> research watershed
+* 28 meterological stations
+* Wind redistribution of precipitation
 
-Type `ls` in the command prompt and make sure you see the correct contents of
-the repository, as listed in the [Directory contents](#directory-contents) section.
 
-## Running the commands
 From the command prompt on **Linux** or **Mac**, run
 ```
-./awsm_docker --case tuol
+./awsm_docker --case rcew
 ```
 On **Windows**, run the PowerShell command
 ```
-python .\awsm_docker --case tuol
+python .\awsm_docker --case rcew
 ```
 
-## Look at the output
+### Look at the output
 The output for *PySnobal* will be located in `output/tuolumne/devel/wy2016/test_case/runs/run20160415_20160416/`
 and the report will be located at `output/tuolumne/devel/wy2016/test_case/reports/report_20160415_20160416/TuolumneRiverBasin_SnowpackSummary_20160416.pdf`.
 These paths are relative to the `awsm_test_cases/` directory.
