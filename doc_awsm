@@ -37,9 +37,9 @@ def run():
     # create maxus if needed
     maxus_call = None
     if not os.path.isfile('./{}/topo/maxus.nc'.format(fpc)):
-        
+
         # if rcew, also create the tbreak for precip redistribution
-        tbreak = None
+        tbreak = ''
         if case == 'rcew':
             tbreak = '--make_tbreak=1 --out_tbreak=/data/input/topo/tbreak.nc'
 
