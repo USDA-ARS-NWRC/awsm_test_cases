@@ -19,8 +19,8 @@ This repository contains instructions for installing the Docker container of AWS
   - [Linux](#linux)
 - [Running the test cases](#running-the-test-cases)
   - [Reynolds Creek Experimental Watershed (RCEW)](#reynolds-creek-experimental-watershed-rcew)
-    - [Look at the output](#look-at-the-output)
-  - [Additional cases](#additional-cases)
+  - [Tuolumne River Basin](#tuolumne-river-basin)
+  - [Boise River Basin (BRB)](#boise-river-basin-brb)
 
 ## Repository contents
 - **brb/:** all files necessary to run the Boise River Basin test case
@@ -94,12 +94,9 @@ sudo apt-get install ncview
 
 # Running the test cases
 
-There are three tests cases in this `awsm_test_cases` repo. They are the Tuolumne
-River Basin, Boise River Basin and Reynolds Creek Experimenatal Watershed. In order to run these cases using the AWSM Docker image, the correct folders must be mounted to the Docker image, and
-the AWSM configuration file must be passed to the Docker image.
+There are three tests cases in this `awsm_test_cases` repo. They are the Tuolumne River Basin, Boise River Basin and Reynolds Creek Experimenatal Watershed. In order to run these cases using the AWSM Docker image, the correct folders must be mounted to the Docker image and the AWSM configuration file must be passed to the Docker image.
 
-For these test cases, the folder sharing is handled through a docker-compose file (located
-in each test case folder), and a Python script that will call the docker-compose routine behind the scenes.
+For these test cases, the folder sharing is handled through a docker-compose file (located in each test case folder), and a Python script that will call the docker-compose routine behind the scenes.
 
 The `output` folder structure for AWSM was developed to organize multiple runs over various water years and basins. The base output structure for these test cases are
 ```
@@ -124,21 +121,8 @@ On **Windows**, run the PowerShell command
 python .\awsm_docker --case rcew
 ```
 
-### Look at the output
-The output for *PySnobal* will be located in `output/tuolumne/devel/wy2016/test_case/runs/run20160415_20160416/`
-and the report will be located at `output/tuolumne/devel/wy2016/test_case/reports/report_20160415_20160416/TuolumneRiverBasin_SnowpackSummary_20160416.pdf`.
-These paths are relative to the `awsm_test_cases/` directory.
+> **NOTE:** Will takes approximately 2-2.5 hours to run simulation and take XXGB of space
 
-Simply open the report with a standard pdf reader. To visualize the time series
-of outputs, use ncview or panoply to open the `snow.nc` or `em.nc` files in the output location.
+## Tuolumne River Basin
 
-## Additional cases
-An additional, larger sample case for the Boise River Basin has been provided.
-This takes up a significant amount of RAM and storage,
-so it may drastically slow down your computer.
-To run the BRB test case, similarly run
-```
-./awsm_docker --case brb
-```
-from the `awsm_test_cases` directory.
-
+## Boise River Basin (BRB)
