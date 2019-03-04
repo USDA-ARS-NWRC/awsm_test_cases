@@ -1,9 +1,8 @@
-version: '2'
+version: '3'
 
 services:
    awsm:
-      image: usdaarsnwrc/awsm:0.8.0
+      image: usdaarsnwrc/awsm:0.9.3
       volumes:
         - .:/data/input
         - ../output:/data/output
-      #user: ${CURRENT_UID}

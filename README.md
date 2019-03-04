@@ -150,22 +150,25 @@ python .\awsm_docker --case brb
 
 ## Tuolumne River Basin, California
 
-The BRB test case is for a signficant rain on snow event in water year 2017 where the second highest inflows to the Lucky Peak Reservoir was recorded.
-* 100 meter resolution, hourly
-* 7,000 km<sup>2</sup> watershed
-* 58 meterological stations
-* Model spin up performed to produce a model state file for restart model
-* 3 month model run
+The Tuolumne test case contains a 50 meter Airborne Snow Observatory snow depth product that automatically updates the model state.
+* 50 meter resolution, hourly
+* 1,400 km<sup>2</sup> watershed
+* 21 meterological stations
+* 3 day model run
+* 50 meter snow depth update in netCDF file format
+* Automated report generated to show lidar flight update change to model state
 
 
 From the command prompt on **Linux** or **Mac**, run
 ```
-./awsm_docker --case brb
+./awsm_docker --case tuol
 ```
 On **Windows**, run the PowerShell command
 ```
-python .\awsm_docker --case brb
+python .\awsm_docker --case tuol
 ```
 
 > **NOTE:** will take approximately 2 to 2.5 hours to complete.
+
+The generated report will be in the `report` directory under `output/tuolumne`.
 
