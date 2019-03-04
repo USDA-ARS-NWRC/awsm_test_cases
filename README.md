@@ -18,9 +18,14 @@ This repository contains instructions for installing the Docker container of AWS
   - [Mac](#mac)
   - [Linux](#linux)
 - [Running the test cases](#running-the-test-cases)
+<<<<<<< HEAD
   - [Reynolds Creek Experimental Watershed (RCEW)](#reynolds-creek-experimental-watershed-rcew)
   - [Tuolumne River Basin](#tuolumne-river-basin)
   - [Boise River Basin (BRB)](#boise-river-basin-brb)
+=======
+  - [Reynolds Creek Experimental Watershed, Idaho (RCEW)](#reynolds-creek-experimental-watershed-idaho-rcew)
+  - [Boise River Basin, Idaho (BRB)](#boise-river-basin-idaho-brb)
+>>>>>>> brb
 
 ## Repository contents
 - **brb/:** all files necessary to run the Boise River Basin test case
@@ -94,7 +99,12 @@ sudo apt-get install ncview
 
 # Running the test cases
 
+<<<<<<< HEAD
 There are three tests cases in this `awsm_test_cases` repo. They are the Tuolumne River Basin, Boise River Basin and Reynolds Creek Experimenatal Watershed. In order to run these cases using the AWSM Docker image, the correct folders must be mounted to the Docker image and the AWSM configuration file must be passed to the Docker image.
+=======
+There are three tests cases in this `awsm_test_cases` repo. They are the Tuolumne
+River Basin, Boise River Basin and Reynolds Creek Experimenatal Watershed. In order to run these cases using the AWSM Docker image, the correct folders must be mounted to the Docker image, and the AWSM configuration file must be passed to the Docker image.
+>>>>>>> brb
 
 For these test cases, the folder sharing is handled through a docker-compose file (located in each test case folder), and a Python script that will call the docker-compose routine behind the scenes.
 
@@ -103,7 +113,9 @@ The `output` folder structure for AWSM was developed to organize multiple runs o
 output/<basin>/devel/<year>/<run_name>/<data | logs | runs><run_date>
 ```
 
-## Reynolds Creek Experimental Watershed (RCEW)
+The model results will be available in the `run` directory, simply open the netCDF files with a viewer to quickly visualize the results. `snow.nc` will have the snowpack state variables like `specific_mass` or `snow_depth` and the `em.nc` will have all the snowpack energetics like `swi` or `net_rad`.
+
+## Reynolds Creek Experimental Watershed, Idaho (RCEW)
 
 The RCEW test case is for the complete water year 2006. Specifics for this model run:
 * 50 meter resolution, hourly
@@ -121,8 +133,33 @@ On **Windows**, run the PowerShell command
 python .\awsm_docker --case rcew
 ```
 
+<<<<<<< HEAD
 > **NOTE:** Will takes approximately 2-2.5 hours to run simulation and take XXGB of space
 
 ## Tuolumne River Basin
 
 ## Boise River Basin (BRB)
+=======
+> **NOTE:** will take approximately 2 to 2.5 hours to complete.
+
+## Boise River Basin, Idaho (BRB)
+
+The BRB test case is for a signficant rain on snow event in water year 2017 where the second highest inflows to the Lucky Peak Reservoir was recorded.
+* 100 meter resolution, hourly
+* 7,000 km<sup>2</sup> watershed
+* 58 meterological stations
+* Model spin up performed to produce a model state file for restart model
+* 3 month model run
+
+
+From the command prompt on **Linux** or **Mac**, run
+```
+./awsm_docker --case brb
+```
+On **Windows**, run the PowerShell command
+```
+python .\awsm_docker --case brb
+```
+
+> **NOTE:** will take approximately 2 to 2.5 hours to complete.
+>>>>>>> brb
