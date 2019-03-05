@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+   jupyter:
+      image: jupyter/scipy-notebook:7f1482f5a136
+      volumes:
+        - $PWD:/home/jovyan/work
+      ports:
+        - 10000:8888
+      environment:
+        - JUPYTER_ENABLE_LAB=yes
+        - NB_UID=${CURRENT_UID}
+      user: root

@@ -21,6 +21,7 @@ This repository contains instructions for installing the Docker container of AWS
   - [Reynolds Creek Experimental Watershed, Idaho (RCEW)](#reynolds-creek-experimental-watershed-idaho-rcew)
   - [Boise River Basin, Idaho (BRB)](#boise-river-basin-idaho-brb)
   - [Tuolumne River Basin, California](#tuolumne-river-basin-california)
+- [Juptyer Lab for analysis](#juptyer-lab-for-analysis)
 
 ## Repository contents
 - **brb/:** all files necessary to run the Boise River Basin test case
@@ -172,3 +173,18 @@ python .\awsm_docker --case tuol
 
 The generated report will be in the `report` directory under `output/tuolumne`.
 
+
+# Juptyer Lab for analysis
+
+All the analysis for the manuscript figures are performed in Jupter Lab included in this repository. A `docker-compose.yml` will pull the image `jupyter/scipy-notebook` which is a pre-built docker image containing everything needed for analysis.
+
+To start the docker image in Linux:
+```
+CURRENT_UID=$(id -u) docker-compose up
+```
+
+To start the docker image in Mac:
+
+To start the docker image in Windows:
+
+Once started, go to `http://localhost:10000` where you will be prompted for a token. The token will have appeared in the terminal, copy and paste into the form and submit.
