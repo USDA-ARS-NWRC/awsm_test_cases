@@ -151,7 +151,8 @@ python .\awsm_docker --case brb
 
 ## Tuolumne River Basin, California
 
-The Tuolumne test case contains a 50 meter Airborne Snow Observatory snow depth product that automatically updates the model state.
+The Tuolumne test case is for April 15 through April 17 in WY 2016. It contains a 50 meter Airborne Snow Observatory snow depth product that automatically updates the model state and shows the model results in a summary report.
+
 * 50 meter resolution, hourly
 * 1,400 km<sup>2</sup> watershed
 * 21 meterological stations
