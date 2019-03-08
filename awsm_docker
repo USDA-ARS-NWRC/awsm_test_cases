@@ -19,7 +19,7 @@ def run():
     if case == 'tuol':
         cfg = 'config_tuol_docker.ini'
         fpc = 'tuolumne'
-        topo = 'tuolx_dem_50m.ipw'
+        topo = 'tuol_topo.nc'
     # set variables to run BRB case
     elif case == 'brb':
         cfg = 'awsm_config_0401_0630.ini'
