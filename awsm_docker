@@ -41,7 +41,7 @@ def run():
         # if rcew, also create the tbreak for precip redistribution
         tbreak = ''
         if case == 'rcew':
-            tbreak = '--make_tbreak=1 --out_tbreak=/data/input/topo/tbreak.nc'
+            tbreak = '--make_tbreak=1 --out_tbreak=/data/input/topo/tbreak.nc --sv_global=200 --sv_local=60'
 
         # format command to generate maxus
         maxus_call = ('docker-compose -f {}/docker-compose.yml'
