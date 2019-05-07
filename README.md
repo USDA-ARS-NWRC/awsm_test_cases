@@ -18,7 +18,7 @@ This repository contains instructions for installing the Docker container of AWS
   - [Mac](#mac)
   - [Linux](#linux)
 - [Running the test cases](#running-the-test-cases)
-  - [Reynolds Creek Experimental Watershed, Idaho (RCEW)](#reynolds-creek-experimental-watershed-idaho-rcew)
+  - [Reynolds Mountain East, Idaho (RME)](#reynolds-mountain-east-idaho-rme)
   - [Boise River Basin, Idaho (BRB)](#boise-river-basin-idaho-brb)
   - [Tuolumne River Basin, California](#tuolumne-river-basin-california)
 - [Juptyer Lab for analysis](#juptyer-lab-for-analysis)
@@ -108,22 +108,22 @@ output/<basin>/devel/<year>/<run_name>/<data | logs | runs><run_date>
 
 The model results will be available in the `run` directory, simply open the netCDF files with a viewer to quickly visualize the results. `snow.nc` will have the snowpack state variables like `specific_mass` or `snow_depth` and the `em.nc` will have all the snowpack energetics like `swi` or `net_rad`.
 
-## Reynolds Creek Experimental Watershed, Idaho (RCEW)
+## Reynolds Mountain East, Idaho (RME)
 
-The RCEW test case is for the complete water year 2006. Specifics for this model run:
-* 50 meter resolution, hourly
-* 227 km<sup>2</sup> research watershed
+The RME test case is for the complete water year 2006 for a small snow dominated headwater catchment. Specifics for this model run:
+* 10 meter resolution, hourly
+* 0.27 km<sup>2</sup> research watershed
 * 28 meterological stations
 * Wind redistribution of precipitation
 
-
+****
 From the command prompt on **Linux** or **Mac**, run
 ```
-./awsm_docker --case rcew
+./awsm_docker --case rme
 ```
 On **Windows**, run the PowerShell command
 ```
-python .\awsm_docker --case rcew
+python .\awsm_docker --case rme
 ```
 
 > **NOTE:** will take approximately 2 to 2.5 hours to complete.

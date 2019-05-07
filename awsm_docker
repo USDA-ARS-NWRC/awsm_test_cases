@@ -9,7 +9,7 @@ from subprocess import call
 def run():
     parser = argparse.ArgumentParser(description='Run AWSM example cases')
     parser.add_argument('--case', metavar='C', type=str,
-                        help='Test case to run, either tuol, brb, or rcew',
+                        help='Test case to run, either tuol, brb, or rme',
                         default='tuol')
 
     args = parser.parse_args()
@@ -25,10 +25,10 @@ def run():
         cfg = 'awsm_config_0401_0630.ini'
         fpc = 'brb'
         topo = 'topo.nc'
-    # set variables to run rcew (not ready yet)
-    elif case == 'rcew':
-        cfg = 'config_rcew_docker.ini'
-        fpc = 'rcew'
+    # set variables to run rme
+    elif case == 'rme':
+        cfg = 'config_rme_docker.ini'
+        fpc = 'rme'
         topo = 'topo.nc'
 
     else:
@@ -38,9 +38,9 @@ def run():
     maxus_call = None
     if not os.path.isfile('./{}/topo/maxus.nc'.format(fpc)):
 
-        # if rcew, also create the tbreak for precip redistribution
+        # if rme, also create the tbreak for precip redistribution
         tbreak = ''
-        if case == 'rcew':
+        if case == 'rme':
             tbreak = '--make_tbreak=1 --out_tbreak=/data/input/topo/tbreak.nc --sv_global=100 --sv_local=30'
 
         # format command to generate maxus
