@@ -2,11 +2,11 @@ output/tuolumne
 output/brb
 output/rme
 tuolumne/topo/maxus.nc
-maxus.nc
-maxus*.nc
-maxus_orig.nc
-tbreak.nc
-tbreak*.nc
+brb/topo/maxus.nc
+tuolumne/topo/tbreak.nc
+brb/topo/tbreak.nc
+tuolumne/topo/tbreak*.nc
+brb/topo/tbreak*.nc
 snow.nc
 em.nc
 .ipynb_checkpoints/
