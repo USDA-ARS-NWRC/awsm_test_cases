@@ -26,7 +26,7 @@ This repository contains instructions for installing the Docker container of AWS
 ## Repository contents
 - **brb/:** all files necessary to run the Boise River Basin test case
 - **tuolumne/:** all files necessary to run the Tuolumne River Basin test case
-- **rme/:** all files necessary to run the Reynolds Creek Experimental Watershed test case
+- **rme/:** all files necessary to run the Reynolds Mountain East test case
 - **output/:** contains output from the test cases
 - **README.md:** documentation on running the test cases
 - **awsm_docker:** python script wrapping the docker compose calls for each test case
