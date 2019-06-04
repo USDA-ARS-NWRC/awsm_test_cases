@@ -125,7 +125,7 @@ On **Windows**, run the PowerShell command
 python .\awsm_docker --case rme
 ```
 
-> **NOTE:** will take approximately 2 to 2.5 hours to complete.
+> **NOTE:** will take approximately 45 minutes to 1.5 hours to complete.
 
 ## Boise River Basin, Idaho (BRB)
 
@@ -138,7 +138,7 @@ The BRB test case is for a significant rain on snow event in water year 2017 whe
 
 
 From the command prompt on **Linux** or **Mac**, run
-```
+```****
 ./awsm_docker --case brb
 ```
 On **Windows**, run the PowerShell command
@@ -146,7 +146,7 @@ On **Windows**, run the PowerShell command
 python .\awsm_docker --case brb
 ```
 
-> **NOTE:** will take approximately 2 to 2.5 hours to complete.
+> **NOTE:** will take approximately 2 to 4 hours to complete, dependent on computer resources.
 
 ## Tuolumne River Basin, California
 
@@ -155,7 +155,7 @@ The Tuolumne test case is for April 15 through April 17 in WY 2016. It contains 
 * 50 meter resolution, hourly
 * 1,400 km<sup>2</sup> watershed
 * 21 meterological stations
-* 3 day model run
+* 3 day model run, first runs SMRF and then runs `ipysnobal`
 * 50 meter snow depth update in netCDF file format
 * Automated report generated to show lidar flight update change to model state
 
