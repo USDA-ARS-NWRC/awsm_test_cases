@@ -65,6 +65,8 @@ Docker is only allowed limited compute resources from your computer. On Windows 
 * [Mac installation instructions](https://docs.docker.com/docker-for-mac/install/)
 * [Ubuntu installation instruction](https://docs.docker.com/install/linux/docker-ce/ubuntu/) and many other Linux distributions are supported
 
+>**NOTE: Windows/Mac users need to ensure that Docker Desktop is running and configured prior to running test cases**
+
 ## Installing `docker-compose`
 
 For ease of use, we use `docker-compose` to handle the mounting of folders between the Docker container and the host computer. Mounting folders between the two systems is required to share the input and output data from the model. Read the [documentation](https://docs.docker.com/compose/install/) for further installation instructions.
