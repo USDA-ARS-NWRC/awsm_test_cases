@@ -22,6 +22,9 @@ This repository contains instructions for installing the Docker container of AWS
   - [Boise River Basin, Idaho (BRB)](#Boise-River-Basin-Idaho-BRB)
   - [Tuolumne River Basin, California](#Tuolumne-River-Basin-California)
 - [Jupyter Lab for analysis](#Jupyter-Lab-for-analysis)
+  - [Linux](#Linux-1)
+  - [Mac](#Mac-1)
+  - [Window](#Window)
 
 ## Repository contents
 - **brb/:** all files necessary to run the Boise River Basin test case
@@ -106,7 +109,7 @@ For these test cases, the folder sharing is handled through a docker-compose fil
 The `output` folder structure for AWSM was developed to organize multiple runs over various water years and basins. The base output structure for these test cases are
 ```
 output/<basin>/devel/<year>/<run_name>/<data | logs | runs><run_date_range>
-```
+```scott
 
 The model results will be available in the `run` directory, simply open the netCDF files with a viewer to quickly visualize the results. `snow.nc` will have the snowpack state variables like `specific_mass` or `snow_depth` and the `em.nc` will have all the snowpack energetics like `swi` or `net_rad`.
 
@@ -181,19 +184,29 @@ The generated report will be in the `report` directory under `output/tuolumne`.
 
 # Jupyter Lab for analysis
 
-<<<<<<< HEAD
-All the analysis for the manuscript figures are performed in Jupyter Lab included in this repository. A `docker-compose.yml` will pull the image `jupyter/scipy-notebook` which is a pre-built docker image containing everything needed for analysis.
-=======
 All the analysis for the manuscript figures are performed in Jupter Lab included in this repository. A `docker-compose.yml` will pull the image `jupyter/scipy-notebook` which is a pre-built docker image containing everything needed for analysis. Only the BRB and RME test case are analyzed as the figures for Tuolumne were generated with `snowav` during the run.
->>>>>>> 33091a37e6bc80748ae60feabcdf1beaea375044
 
+Once the Jupyter Lab is started, go to `http://localhost:10000` where you will be prompted for a token. The token will have appeared in the terminal, copy and paste into the form and submit.
+
+
+## Linux
 To start the docker image in Linux:
 ```
 CURRENT_UID=$(id -u) docker-compose up
 ```
 
+## Mac
 To start the docker image in Mac:
 
-To start the docker image in Windows:
+## Window
+The Jupyter Lab needs the current user id to ensure that any files created or modified are owned by the user. Windows is slightly different in that the `CURRENT_UID` is just a placeholder and does not matter. To start the docker image in Windows, either:
 
-Once started, go to `http://localhost:10000` where you will be prompted for a token. The token will have appeared in the terminal, copy and paste into the form and submit.
+```
+docker-compose -f docker-compose.windows.yml up
+```
+or
+```
+SET CURRENT_UID=1000
+docker-compose up
+```
+
