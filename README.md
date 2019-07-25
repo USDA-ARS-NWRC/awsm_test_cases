@@ -178,7 +178,7 @@ The generated report will be in the `report` directory under `output/tuolumne`.
 
 # Juptyer Lab for analysis
 
-All the analysis for the manuscript figures are performed in Jupter Lab included in this repository. A `docker-compose.yml` will pull the image `jupyter/scipy-notebook` which is a pre-built docker image containing everything needed for analysis.
+All the analysis for the manuscript figures are performed in Jupter Lab included in this repository. A `docker-compose.yml` will pull the image `jupyter/scipy-notebook` which is a pre-built docker image containing everything needed for analysis. Only the BRB and RME test case are analyzed as the figures for Tuolumne were generated with `snowav` during the run.
 
 To start the docker image in Linux:
 ```
