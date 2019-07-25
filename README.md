@@ -5,23 +5,23 @@ This repository contains instructions for installing the Docker container of AWS
 3. Reynolds Mountain East in the Reynolds Creek Experimental Watershed for the entire WY 2006 with wind redistribution of precipitation
 
 ## Table of contents
-- [AWSM Test Cases](#awsm-test-cases)
-  - [Table of contents](#table-of-contents)
-  - [Repository contents](#repository-contents)
-- [Downloading this repository](#downloading-this-repository)
-- [Docker setup](#docker-setup)
-  - [Compute resources](#compute-resources)
-  - [Installing Docker](#installing-docker)
-  - [Installing `docker-compose`](#installing-docker-compose)
-- [NetCDF viewers](#netcdf-viewers)
-  - [Windows](#windows)
-  - [Mac](#mac)
-  - [Linux](#linux)
-- [Running the test cases](#running-the-test-cases)
-  - [Reynolds Mountain East, Idaho (RME)](#reynolds-mountain-east-idaho-rme)
-  - [Boise River Basin, Idaho (BRB)](#boise-river-basin-idaho-brb)
-  - [Tuolumne River Basin, California](#tuolumne-river-basin-california)
-- [Juptyer Lab for analysis](#juptyer-lab-for-analysis)
+- [AWSM Test Cases](#AWSM-Test-Cases)
+  - [Table of contents](#Table-of-contents)
+  - [Repository contents](#Repository-contents)
+- [Downloading this repository](#Downloading-this-repository)
+- [Docker setup](#Docker-setup)
+  - [Compute resources](#Compute-resources)
+  - [Installing Docker](#Installing-Docker)
+  - [Installing `docker-compose`](#Installing-docker-compose)
+- [NetCDF viewers](#NetCDF-viewers)
+  - [Windows](#Windows)
+  - [Mac](#Mac)
+  - [Linux](#Linux)
+- [Running the test cases](#Running-the-test-cases)
+  - [Reynolds Mountain East, Idaho (RME)](#Reynolds-Mountain-East-Idaho-RME)
+  - [Boise River Basin, Idaho (BRB)](#Boise-River-Basin-Idaho-BRB)
+  - [Tuolumne River Basin, California](#Tuolumne-River-Basin-California)
+- [Jupyter Lab for analysis](#Jupyter-Lab-for-analysis)
 
 ## Repository contents
 - **brb/:** all files necessary to run the Boise River Basin test case
@@ -137,6 +137,7 @@ The BRB test case is for a significant rain on snow event in water year 2017 whe
 * 58 meterological stations
 * Model spin up performed to produce a model state file for restart model
 * 3 month model run
+* Model type is `smrf_ipysnobal` meaning `SMRF` and `pysnobal` run at the same time utilizing the in memory queue
 
 
 From the command prompt on **Linux** or **Mac**, run
@@ -149,6 +150,8 @@ python .\awsm_docker --case brb
 ```
 
 > **NOTE:** will take approximately 2 to 4 hours to complete, dependent on computer resources.
+
+> **WARNING:** The BRB run is threaded and will consume significant memory. If the computer does not have 12GB minimum allocated to Docker, you can turn off threading by setting `threading: False` in the configuration file under `[system]`. Otherwise `AWSM` will quit unexpectedly.
 
 ## Tuolumne River Basin, California
 
@@ -176,9 +179,9 @@ python .\awsm_docker --case tuol
 The generated report will be in the `report` directory under `output/tuolumne`.
 
 
-# Juptyer Lab for analysis
+# Jupyter Lab for analysis
 
-All the analysis for the manuscript figures are performed in Jupter Lab included in this repository. A `docker-compose.yml` will pull the image `jupyter/scipy-notebook` which is a pre-built docker image containing everything needed for analysis.
+All the analysis for the manuscript figures are performed in Jupyter Lab included in this repository. A `docker-compose.yml` will pull the image `jupyter/scipy-notebook` which is a pre-built docker image containing everything needed for analysis.
 
 To start the docker image in Linux:
 ```
