@@ -3,7 +3,6 @@ version: '3'
 services:
    awsm:
       image: usdaarsnwrc/awsm:0.9.26
-      entrypoint: /bin/bash
       volumes:
         - .:/data/input
         - ../output:/data/output

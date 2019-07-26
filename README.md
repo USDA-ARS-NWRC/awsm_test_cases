@@ -5,26 +5,26 @@ This repository contains instructions for installing the Docker container of AWS
 3. Reynolds Mountain East in the Reynolds Creek Experimental Watershed for the entire WY 2006 with wind redistribution of precipitation
 
 ## Table of contents
-- [AWSM Test Cases](#AWSM-Test-Cases)
-  - [Table of contents](#Table-of-contents)
-  - [Repository contents](#Repository-contents)
-- [Downloading this repository](#Downloading-this-repository)
-- [Docker setup](#Docker-setup)
-  - [Compute resources](#Compute-resources)
-  - [Installing Docker](#Installing-Docker)
-  - [Installing `docker-compose`](#Installing-docker-compose)
-- [NetCDF viewers](#NetCDF-viewers)
-  - [Windows](#Windows)
-  - [Mac](#Mac)
-  - [Linux](#Linux)
-- [Running the test cases](#Running-the-test-cases)
-  - [Reynolds Mountain East, Idaho (RME)](#Reynolds-Mountain-East-Idaho-RME)
-  - [Boise River Basin, Idaho (BRB)](#Boise-River-Basin-Idaho-BRB)
-  - [Tuolumne River Basin, California](#Tuolumne-River-Basin-California)
-- [Jupyter Lab for analysis](#Jupyter-Lab-for-analysis)
-  - [Linux](#Linux-1)
-  - [Mac](#Mac-1)
-  - [Window](#Window)
+- [AWSM Test Cases](#awsm-test-cases)
+  - [Table of contents](#table-of-contents)
+  - [Repository contents](#repository-contents)
+- [Downloading this repository](#downloading-this-repository)
+- [Docker setup](#docker-setup)
+  - [Compute resources](#compute-resources)
+  - [Installing Docker](#installing-docker)
+  - [Installing `docker-compose`](#installing-docker-compose)
+- [NetCDF viewers](#netcdf-viewers)
+  - [Windows](#windows)
+  - [Mac](#mac)
+  - [Linux](#linux)
+- [Running the test cases](#running-the-test-cases)
+  - [Reynolds Mountain East, Idaho (RME)](#reynolds-mountain-east-idaho-rme)
+  - [Boise River Basin, Idaho (BRB)](#boise-river-basin-idaho-brb)
+  - [Tuolumne River Basin, California](#tuolumne-river-basin-california)
+- [Jupyter Lab for analysis](#jupyter-lab-for-analysis)
+  - [Linux](#linux-1)
+  - [Mac](#mac-1)
+  - [Windows](#windows-1)
 
 ## Repository contents
 - **brb/:** all files necessary to run the Boise River Basin test case
@@ -109,7 +109,7 @@ For these test cases, the folder sharing is handled through a docker-compose fil
 The `output` folder structure for AWSM was developed to organize multiple runs over various water years and basins. The base output structure for these test cases are
 ```
 output/<basin>/devel/<year>/<run_name>/<data | logs | runs><run_date_range>
-```scott
+```
 
 The model results will be available in the `run` directory, simply open the netCDF files with a viewer to quickly visualize the results. `snow.nc` will have the snowpack state variables like `specific_mass` or `snow_depth` and the `em.nc` will have all the snowpack energetics like `swi` or `net_rad`.
 
@@ -130,7 +130,7 @@ On **Windows**, run the PowerShell command
 python .\awsm_docker --case rme
 ```
 
-> **NOTE:** will take approximately 45 minutes to 1.5 hours to complete.
+> **NOTE:** will take approximatel 1 to 2 hours to complete.
 
 ## Boise River Basin, Idaho (BRB)
 
@@ -163,7 +163,7 @@ The Tuolumne test case is for April 15 through April 17 in WY 2016. It contains 
 * 50 meter resolution, hourly
 * 1,400 km<sup>2</sup> watershed
 * 21 meterological stations
-* 3 day model run, first runs SMRF and then runs `ipysnobal`
+* 2 day model run, first runs SMRF and then runs `ipysnobal`
 * 50 meter snow depth update in netCDF file format
 * Automated report generated to show lidar flight update change to model state
 
@@ -177,7 +177,7 @@ On **Windows**, run the PowerShell command
 python .\awsm_docker --case tuol
 ```
 
-> **NOTE:** will take approximately 2 to 2.5 hours to complete.
+> **NOTE:** will take approximately 10 to 30 minutes to complete.
 
 The generated report will be in the `report` directory under `output/tuolumne`.
 
@@ -190,15 +190,15 @@ Once the Jupyter Lab is started, go to `http://localhost:10000` where you will b
 
 
 ## Linux
-To start the docker image in Linux:
+To start Jupyter Lab in Linux:
 ```
 CURRENT_UID=$(id -u) docker-compose up
 ```
 
 ## Mac
-To start the docker image in Mac:
+To start Jupyter Lab in Mac:
 
-## Window
+## Windows
 The Jupyter Lab needs the current user id to ensure that any files created or modified are owned by the user. Windows is slightly different in that the `CURRENT_UID` is just a placeholder and does not matter. To start the docker image in Windows, either:
 
 ```
