@@ -15,8 +15,7 @@ This repository contains instructions for installing the Docker container of AWS
   - [Installing `docker-compose`](#installing-docker-compose)
 - [NetCDF viewers](#netcdf-viewers)
   - [Windows](#windows)
-  - [Mac](#mac)
-  - [Linux](#linux)
+  - [Mac and Linux](#mac-and-linux)
 - [Running the test cases](#running-the-test-cases)
   - [Reynolds Mountain East, Idaho (RME)](#reynolds-mountain-east-idaho-rme)
   - [Boise River Basin, Idaho (BRB)](#boise-river-basin-idaho-brb)
@@ -79,24 +78,13 @@ For ease of use, we use `docker-compose` to handle the mounting of folders betwe
 
 # NetCDF viewers
 
-The output files from [SMRF](https://github.com/USDA-ARS-NWRC/smrf) and [PySnobal](https://github.com/USDA-ARS-NWRC/pysnobal) are in NetCDF format. In order to view these files, you will need a NetCDF viewer. The following are a small collection of viewers that we have used on the different operating systems.
+The output files from [SMRF](https://github.com/USDA-ARS-NWRC/smrf) and [PySnobal](https://github.com/USDA-ARS-NWRC/pysnobal) are in NetCDF format. In order to view these files, you will need a NetCDF viewer. The following are a small collection of viewers that we have used on the different operating systems but are by no means the only available viewers.
 
 ## Windows
-Panoply is a NetCDF, HDF, and GRIB viewer maintained by NASA, and is a good option for **Windows** users. Install instruction can be found at https://www.giss.nasa.gov/tools/panoply/.
+[Panoply](https://www.giss.nasa.gov/tools/panoply/) is a NetCDF, HDF, and GRIB viewer maintained by NASA, and is a good option for **Windows** users.
 
-## Mac
-NCView is a lightweight NetCDF viewer that allows for quick visualization of NetCDF files. It is maintained by UC San Diego. Further documentation can be found at http://meteora.ucsd.edu/~pierce/ncview_home_page.html.
-
-The easiest method of install on a Mac is to use Homebrew.
-```
-brew install ncview
-```
-
-## Linux
-To install Ncview from the command line on Ubuntu:
-```
-sudo apt-get install ncview
-```
+## Mac and Linux
+[Ncview](http://meteora.ucsd.edu/~pierce/ncview_home_page.html) is a lightweight NetCDF viewer that allows for quick visualization of NetCDF files and is maintained by UC San Diego.
 
 # Running the test cases
 
@@ -151,9 +139,9 @@ On **Windows**, run the PowerShell command
 python .\awsm_docker --case brb
 ```
 
-> **NOTE:** will take approximately 2 to 4 hours to complete, dependent on computer resources.
+> **NOTE:** will take approximately 2 to 8 hours to complete, dependent on computer resources and if threading is turned on or off.
 
-> **WARNING:** Due to the domain size of the BRB, the simulation will consume significant memory. If the computer does not have 12GB minimum allocated to Docker, you can turn off threading by setting `threading: False` in the configuration file under `[system]`. Otherwise `AWSM` will quit unexpectedly.
+> **WARNING:** Due to the domain size of the BRB, the simulation will consume significant memory. If the computer does not have 16GB minimum allocated to Docker, you can turn off threading by setting `threading: False` in the configuration file under `[system]`. Otherwise `AWSM` will quit unexpectedly.
 
 ## Tuolumne River Basin, California
 
