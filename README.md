@@ -10,9 +10,9 @@ This repository contains instructions for installing the Docker container of AWS
   - [Repository contents](#repository-contents)
 - [Downloading this repository](#downloading-this-repository)
 - [Docker setup](#docker-setup)
-  - [Compute resources](#compute-resources)
   - [Installing Docker](#installing-docker)
   - [Installing `docker-compose`](#installing-docker-compose)
+  - [Compute resources for docker](#compute-resources-for-docker)
 - [NetCDF viewers](#netcdf-viewers)
   - [Windows](#windows)
   - [Mac and Linux](#mac-and-linux)
@@ -54,12 +54,6 @@ In order to run AWSM, you will need to install Docker and understand the basics 
 
 >**NOTE: Docker requires that you are a system administrator for your computer or have sudo/administrative privileges.**
 
-## Compute resources
-The AWSM test cases have been optimized to limit the computational burden but increasing the computational resources will make the simulations run faster. On Windows and Mac, docker is only allowed limited compute resources from your computer and you will need to provide more resources to Docker for AWSM to function properly. We recommend at a minimum the following computer specifications:
-* 2 cores
-* 16GB of RAM
-* 20GB of hard drive space if running all test cases
-
 ## Installing Docker
 
 * [Window installation instructions](https://docs.docker.com/docker-for-windows/install/)
@@ -75,6 +69,12 @@ For ease of use, we use `docker-compose` to handle the mounting of folders betwe
 * Windows already includes `docker-compose`
 * Mac already includes `docker-compose`
 * Linux [latest install instructions](https://docs.docker.com/compose/install/)
+
+## Compute resources for docker
+The AWSM test cases have been optimized to limit the computational burden but increasing the computational resources will make the simulations run faster. On Windows and Mac, docker is only allowed limited compute resources from your computer and you will need to provide more resources to Docker for AWSM to function properly. We recommend at a minimum the following computer specifications:
+* 2 cores
+* 16GB of RAM
+* 20GB of hard drive space if running all test cases
 
 # NetCDF viewers
 
