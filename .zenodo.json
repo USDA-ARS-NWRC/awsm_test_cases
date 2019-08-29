@@ -1,13 +1,12 @@
 {
 
     "license": "other-open",
-    "title": "Automated Water Supply Model (AWSM)",
-    "version": "v0.9.11",
+    "title": "Automated Water Supply Model (AWSM) test cases",
     "upload_type": "software",
     "keywords": [
         "snow modeling",
         "water resources",
-		    "energy balance",
+		"energy balance",
         "water supply forecasting"
     ],
     "creators": [
