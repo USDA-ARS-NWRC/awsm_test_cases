@@ -55,7 +55,8 @@ def run():
         os.remove('./{}/topo/maxus.nc'.format(fpc))
         shutil.move('./{}/topo/maxus_30window.nc'.format(fpc),
                     './{}/topo/maxus.nc'.format(fpc))
-    print(maxus_call)
+        print(maxus_call)
+        
     # run system
     run_call = ('docker-compose'
                     ' -f ./{}/docker-compose.yml'
