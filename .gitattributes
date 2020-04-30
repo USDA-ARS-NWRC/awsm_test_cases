@@ -1,0 +1,2 @@
+output/brb/devel/wy2017/awsm_paper/runs/run4368_6528/snow.nc filter=lfs diff=lfs merge=lfs -text
+output/brb/devel/wy2017/awsm_paper/runs/run4368_6528/em.nc filter=lfs diff=lfs merge=lfs -text

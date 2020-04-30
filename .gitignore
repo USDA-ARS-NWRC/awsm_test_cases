@@ -10,3 +10,10 @@ brb/topo/tbreak*.nc
 snow.nc
 em.nc
 .ipynb_checkpoints/
+
+# RME results can be added as they are small
+!output/rme/devel/wy2006/rme_longterm_2006/runs/run0000_5832/snow.nc
+
+# BRB results will be on git-lfs
+!output/brb/devel/wy2017/awsm_paper/runs/run4368_6528/snow.nc
+!output/brb/devel/wy2017/awsm_paper/runs/run4368_6528/em.nc
