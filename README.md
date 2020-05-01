@@ -1,4 +1,7 @@
 # AWSM Test Cases
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/USDA-ARS-NWRC/awsm_test_cases/master)
+
 This repository contains instructions for installing the Docker container of AWSM and running short test cases. The instructions involve installing the supporting software and the AWSM system. The test cases include three model tests:
 1. Reynolds Mountain East in the Reynolds Creek Experimental Watershed for the entire WY 2006 with wind redistribution of precipitation
 2. Boise River Basin three month simulation during WY 2017 for a historic snowmelt event
